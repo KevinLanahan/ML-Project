@@ -85,22 +85,3 @@ if __name__ == '__main__':
     accuracy = 100 * correct / total
     print(f'Accuracy of the model on the 10000 test images: {accuracy:.2f}%')
 
-    dataiter = iter(testloader)
-    images, labels = dataiter.next()
-
-    outputs = net(images)
-    _, predicted = torch.max(outputs, 1)
-
-    dataiter = iter(testloader)
-    images, labels = dataiter.next()
-
-    outputs = net(images)
-    _, predicted = torch.max(outputs, 1)
-
-    fig, axes = plt.subplots(1, 4, figsize=(12, 6))
-    for i in range(4):
-        ax = axes[i]
-        ax.imshow(np.transpose(images[i] / 2 + 0.5, (1, 2, 0))) 
-        ax.set_title(f'Pred: {predicted[i]} | True: {labels[i]}')
-        ax.axis('off')  
-    plt.show()
